@@ -19,60 +19,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class ExcelShower extends HttpServlet {
-    protected static int counter;
-    /*public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
-        HashMap<Integer, Method> getters = new HashMap<>();
-        getters.put(0, Account.class.getMethod("getEmailAddress"));
-        getters.put(1, Account.class.getMethod("getUserName"));
-        getters.put(2, Account.class.getMethod("getStatus"));
-        getters.put(3, Account.class.getMethod("getPhoneNumber"));
-        List<Account> accounts = new AccountRepositoryImpl(Account.class).findAll();
-        HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("First");
-        Long numberOfRows = Long.valueOf((Long) new AccountRepositoryImpl(Account.class).countAll());
-        for(int i = 0; i < numberOfRows; i++) {
-            HSSFRow row = sheet.createRow(i);
-            for(int j = 0; j < 4; j++) {
-                HSSFCell cell = row.createCell(j);
-                cell.setCellValue(String.valueOf(getters.get(j).invoke(accounts.get(i))));
-            }
-            sheet.autoSizeColumn(i);
-        }
-        workbook.write(new FileOutputStream("test.xls"));
-        //zip maker
-        try {
-            byte buffer[] = new byte[2048];
-
-            FileOutputStream fileOutputStream = new FileOutputStream(
-                    "E:\\maktab class\\tamrin\\HW16\\ZippedFileTest.zip");
-            ZipOutputStream zipOutputStream = new ZipOutputStream(
-                    new BufferedOutputStream(fileOutputStream));
-
-            File inputDir = new File("E:\\maktab class\\tamrin\\HW16");
-            String listOfFiles[] = inputDir.list();
-
-            BufferedInputStream bufferedInputStream = null;
-
-                System.out.println("Adding File to zip: " + "test.xls");
-                FileInputStream fileInputStream = new FileInputStream(new File(
-                        inputDir, "test.xls"));
-                bufferedInputStream = new BufferedInputStream(fileInputStream);
-                ZipEntry entry = new ZipEntry("test.xls");
-                zipOutputStream.putNextEntry(entry);
-                int count;
-                while ((count = bufferedInputStream.read(buffer)) != -1) {
-                    zipOutputStream.write(buffer, 0, count);
-                }
-                bufferedInputStream.close();
-
-            zipOutputStream.close();
-
-            System.out.println("File Zipped!!!!!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
@@ -85,15 +31,9 @@ public class ExcelShower extends HttpServlet {
         HashMap<Integer, Method> getters = new HashMap<>();
         try {
             getters.put(0, Account.class.getMethod("getEmailAddress"));
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        try {
+
             getters.put(1, Account.class.getMethod("getUserName"));
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        try {
+
             getters.put(2, Account.class.getMethod("getStatus"));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
